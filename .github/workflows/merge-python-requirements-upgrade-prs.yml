@@ -9,18 +9,17 @@ on:
 
 
 jobs:
-  call-automerge-prs-workflow:
+  download-script:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Download Script
+      - name: Download script file
         run: |
           mkdir -p scripts
-          cd scripts
-          wget https://raw.githubusercontent.com/zubairshakoorarbisoft/.github/master/scripts/get_ready_to_merge_prs.py
+          curl -o scripts/get_ready_to_merge_prs.py https://raw.githubusercontent.com/zubairshakoorarbisoft/.github/master/scripts/get_ready_to_merge_prs.py
 
-      - name: Merge Requirements Upgrade PRs
-        uses: zubairshakoorarbisoft/.github/.github/workflows/merge-python-requirements-upgrade-prs.yml@master
-        with:
-          ORG_NAME: "edx"
+  call-automerge-prs-workflow:
+    needs:
+      - download-script
+    uses: zubairshakoorarbisoft/.github/.github/workflows/merge-python-requirements-upgrade-prs.yml@master
+    with:
+      ORG_NAME: "edx"

@@ -9,6 +9,6 @@ on:
 
 jobs:
   call-repo-health-job-workflow:
-    uses: openedx/.github/.github/workflows/merge-python-requirements-upgrade-prs.yml@master
+    uses: zubairshakoorarbisoft/.github/.github/workflows/merge-python-requirements-upgrade-prs.yml@master
     with:
       ORG_NAMES: "edx"  

@@ -5,6 +5,7 @@ on:
     # will run the job at 10 AM every day (UTC),
     # https://crontab.guru/#0_10_*_*_*
     - cron: "0 10 * * *"
+  workflow_dispatch:
 
 jobs:
   call-repo-health-job-workflow:

@@ -1,0 +1,13 @@
+name: Merge Python Requirements Upgrade PRs for EDX org
+
+on:
+  schedule:
+    # will run the job at 10 AM every day (UTC),
+    # https://crontab.guru/#0_10_*_*_*
+    - cron: "0 10 * * *"
+
+jobs:
+  call-repo-health-job-workflow:
+    uses: openedx/.github/.github/workflows/merge-python-requirements-upgrade-prs.yml@master
+    with:
+      ORG_NAMES: "edx"  

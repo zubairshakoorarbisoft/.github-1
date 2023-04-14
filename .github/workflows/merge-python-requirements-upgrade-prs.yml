@@ -9,7 +9,7 @@ on:
 
 
 jobs:
-call-automerge-prs-workflow:
-  uses: zubairshakoorarbisoft/.github/.github/workflows/merge-python-requirements-upgrade-prs.yml@master
-  with:
-    ORG_NAME: "edx"
+  call-automerge-prs-workflow:
+    uses: zubairshakoorarbisoft/.github/.github/workflows/merge-python-requirements-upgrade-prs.yml@master
+    with:
+      ORG_NAME: "edx"

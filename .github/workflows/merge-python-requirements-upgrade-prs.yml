@@ -7,8 +7,9 @@ on:
     - cron: "0 10 * * *"
   workflow_dispatch:
 
+
 jobs:
-  call-repo-health-job-workflow:
-    uses: zubairshakoorarbisoft/.github/.github/workflows/merge-python-requirements-upgrade-prs.yml@master
-    with:
-      ORG_NAMES: "edx"  
+call-automerge-prs-workflow:
+  uses: zubairshakoorarbisoft/.github/.github/workflows/merge-python-requirements-upgrade-prs.yml@master
+  with:
+    ORG_NAME: "edx"

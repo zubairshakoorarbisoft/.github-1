@@ -9,19 +9,7 @@ on:
 
 
 jobs:
-  download-script:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download script file
-        id: download
-        run: |
-          mkdir -p scripts
-          curl -o scripts/get_ready_to_merge_prs.py https://raw.githubusercontent.com/zubairshakoorarbisoft/.github/master/scripts/get_ready_to_merge_prs.py
-
-
   call-automerge-prs-workflow:
-    needs:
-      - download-script
     uses: zubairshakoorarbisoft/.github/.github/workflows/merge-python-requirements-upgrade-prs.yml@master
     with:
       ORG_NAME: "edx"

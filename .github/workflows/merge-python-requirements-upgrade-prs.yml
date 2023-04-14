@@ -11,24 +11,17 @@ on:
 jobs:
   download-script:
     runs-on: ubuntu-latest
-    outputs:
-      script-path: ${{ steps.download.outputs.script-path }}
     steps:
       - name: Download script file
         id: download
         run: |
           mkdir -p scripts
           curl -o scripts/get_ready_to_merge_prs.py https://raw.githubusercontent.com/zubairshakoorarbisoft/.github/master/scripts/get_ready_to_merge_prs.py
-          echo "::set-output name=script-path::$(pwd)/scripts/get_ready_to_merge_prs.py"
+
 
   call-automerge-prs-workflow:
     needs:
       - download-script
-    runs-on: ubuntu-latest
-    env:
-      SCRIPT_PATH: ${{ needs.download-script.outputs.script-path }}
-    - name: Merge Python Requirements Upgrade PRs
-      uses: zubairshakoorarbisoft/.github/.github/workflows/merge-python-requirements-upgrade-prs.yml@master
-      with:
-        ORG_NAME: "edx"
-        SCRIPT_PATH: ${{ env.SCRIPT_PATH }}
+    uses: zubairshakoorarbisoft/.github/.github/workflows/merge-python-requirements-upgrade-prs.yml@master
+    with:
+      ORG_NAME: "edx"

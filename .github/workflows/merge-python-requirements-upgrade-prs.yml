@@ -13,3 +13,5 @@ jobs:
     uses: zubairshakoorarbisoft/.github/.github/workflows/merge-python-requirements-upgrade-prs.yml@master
     with:
       ORG_NAME: "edx"
+    secrets:
+      REQUIREMENTS_BOT_GITHUB_TOKEN: ${{ secrets.requirements_bot_github_token }}

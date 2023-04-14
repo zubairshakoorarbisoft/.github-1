@@ -7,7 +7,6 @@ on:
     - cron: "0 10 * * *"
   workflow_dispatch:
 
-
 jobs:
   download-script:
     runs-on: ubuntu-latest
@@ -17,15 +16,12 @@ jobs:
           mkdir -p scripts
           curl -o scripts/get_ready_to_merge_prs.py https://raw.githubusercontent.com/zubairshakoorarbisoft/.github/master/scripts/get_ready_to_merge_prs.py
 
-  automerge-prs:
-    runs-on: ubuntu-latest
+  call-automerge-prs-workflow:
     needs:
       - download-script
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Merge Python Requirements Upgrade PRs
+      - name: Call automerge-prs workflow
         uses: zubairshakoorarbisoft/.github/.github/workflows/merge-python-requirements-upgrade-prs.yml@master
         with:
           ORG_NAME: "edx"

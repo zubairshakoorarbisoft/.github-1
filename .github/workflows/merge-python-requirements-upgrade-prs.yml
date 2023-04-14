@@ -12,12 +12,10 @@ jobs:
   download-script:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Download Script
+      - name: Download script file
         run: |
-          wget https://raw.githubusercontent.com/zubairshakoorarbisoft/.github/master/scripts/get_ready_to_merge_prs.py
+          mkdir -p scripts
+          curl -sSL https://raw.githubusercontent.com/zubairshakoorarbisoft/.github/master/scripts/get_ready_to_merge_prs.py > scripts/get_ready_to_merge_prs.py
   call-automerge-prs-workflow:
     needs:
       - download-script
